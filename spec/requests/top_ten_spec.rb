@@ -11,7 +11,7 @@ RSpec.describe "TopTen" do
   end
 
   it "lists the top 10 high scores" do
-    get "/high-scores"
+    get "/api/v0/high-scores"
 
     top_ten = @score_list.sort_by(&:number_correct).reverse[0..9]
 
