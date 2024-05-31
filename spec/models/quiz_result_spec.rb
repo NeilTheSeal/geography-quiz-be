@@ -9,8 +9,8 @@ RSpec.describe QuizResult, type: :model do
   describe ".high_scores" do
     it "returns the top 10 scores" do
       user = create(:user)
-      11.times do |i|
-        create(:quiz_result, number_correct: i, user:)
+      11.times do |quiz_score|
+        create(:quiz_result, number_correct: quiz_score, user:)
       end
 
       high_scores = QuizResult.high_scores
