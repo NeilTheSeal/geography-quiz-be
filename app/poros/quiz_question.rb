@@ -21,7 +21,7 @@ class QuizQuestion
 
     # question_type = question_types.sample
 
-    question_type = "capital"
+    question_type = "flag"
 
     questions = []
 
