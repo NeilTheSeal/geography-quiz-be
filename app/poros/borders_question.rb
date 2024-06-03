@@ -18,8 +18,19 @@ class BordersQuestion < QuizQuestion
       CountryCodes.country_name[cca3.to_sym]
     end
 
-    str = bordering_countries[0..bordering_countries.length - 2].join(", ")
-    str += " and #{bordering_countries.last}"
+    str = ""
+
+    case bordering_countries.length
+    when 0
+      "no countries"
+    when 1
+      str += "only #{bordering_countries[0]}"
+    when 2
+      str += "#{bordering_countries[0]} and #{bordering_countries[1]}"
+    else
+      str += bordering_countries[0..bordering_countries.length - 2].join(", ")
+      str += " and #{bordering_countries.last}"
+    end
 
     @question = "Which country borders #{str}?"
     @correct_answer = countries[0].name[:common]
