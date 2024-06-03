@@ -1,7 +1,8 @@
-class Country 
+class Country
   attr_reader :name, :cca3, :un_member, :currencies, :capital,
               :region, :sub_region, :languages, :landlocked, :borders,
               :area, :flag_url, :map_url, :population, :drive_side, :coat_of_arms_url
+
   def initialize(attrs)
     @name = attrs[:name]
     @cca3 = attrs[:cca3]

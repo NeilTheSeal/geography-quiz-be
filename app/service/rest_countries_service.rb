@@ -1,4 +1,4 @@
-class RestCountriesService 
+class RestCountriesService
   def self.all_countries
     conn = Faraday.new(url: "https://restcountries.com") do |faraday|
       faraday.headers["Accept"] = "application/json"
