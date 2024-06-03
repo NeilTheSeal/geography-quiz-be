@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     namespace :v0 do
       get "/", to: "home#index"
       get "/high-scores", to: "high_scores#index"
+      get "/quiz-questions", to: "quiz_questions#index"
     end
   end
 end
