@@ -7,11 +7,10 @@ class LandlockedQuestion < QuizQuestion
   private
 
   def generate_question
-    countries = @geography_data.sample(4)
+    country = @geography_data.sample
 
-    @question = "What country is landlocked?"
-    @correct_answer = countries[0].landlocked == true
-    @options = countries.map { |country| country.landlocked }
-    @options.shuffle!
+    @question = "Is #{country.name[:common]} landlocked?"
+    @correct_answer = country.landlocked
+    @options = [true, false]
   end
 end

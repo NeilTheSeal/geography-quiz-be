@@ -1,31 +1,31 @@
 class QuizQuestion
-  attr_reader :question, :correct_answer, :options, :id
+  attr_reader :question, :correct_answer, :options, :id, :image
 
   def initialize(params)
     @geography_data = params[:geography_data]
     @question = nil
     @correct_answer = nil
     @options = []
+    @image = false
     @id = params[:id]
   end
 
   def self.generate20(geography_data)
-    # question_types = %w[
-    #   capital
-    #   flag
-    #   borders
-    #   landlocked
-    #   population
-    #   drive_side
-    # ]
+    question_types = %w[
+      capital
+      flag
+      borders
+      landlocked
+      population
+      drive_side
+    ]
 
-    # question_type = question_types.sample
-
-    question_type = "borders"
+    # question_type = "drive_side"
 
     questions = []
 
     20.times do |id|
+      question_type = question_types.sample
       questions << return_question(question_type, geography_data, id)
     end
 
