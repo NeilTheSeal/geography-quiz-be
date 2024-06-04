@@ -20,8 +20,6 @@ class QuizQuestion
       drive_side
     ]
 
-    # question_type = "drive_side"
-
     questions = []
 
     20.times do |id|
