@@ -9,7 +9,8 @@ RSpec.describe "QuizQuestions", type: :request do
 
       json_response = JSON.parse(response.body)
 
-      # require "pry"; binding.pry
+      require "pry"
+      binding.pry
 
       expect(json_response["data"].length).to eq(20)
       expect(json_response["data"].first["attributes"]).to be_a(Hash)

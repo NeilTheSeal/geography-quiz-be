@@ -1,6 +1,7 @@
 class FlagQuestion < QuizQuestion
   def initialize(params)
     super
+    @image = true
     generate_question
   end
 
