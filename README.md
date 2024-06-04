@@ -1,4 +1,4 @@
-# Geography Quiz Front-End
+# Geography Quiz Back-End
 > A fun online quiz to test your knowledge of world geography
 
 ![Ruby][ruby-image]
