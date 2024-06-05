@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       get "/", to: "home#index"
       get "/high-scores", to: "high_scores#index"
       get "/quiz-questions", to: "quiz_questions#index"
+      get "/previous-scores", to: "previous_scores#index"
     end
   end
 end

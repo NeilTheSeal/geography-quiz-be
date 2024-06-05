@@ -23,4 +23,30 @@ RSpec.describe QuizResult, type: :model do
       expect(high_scores.first.user_id).to eq "10"
     end
   end
+
+  describe '.previous_scores' do
+    it "returns previous scores" do
+      2.times do |i|
+        create(
+          :quiz_result,
+          number_correct: i,
+          user_id: "1"
+        )
+      end
+      2.times do |i|
+        create(
+          :quiz_result,
+          number_correct: i,
+          user_id: "2"
+        )
+      end
+
+      scores = QuizResult.find_scores("1")
+
+      expect(scores.length).to eq 2
+      expect(scores.first.number_correct).to eq 0
+      expect(scores.last.number_correct).to eq 1
+      expect(scores.first.user_id).to eq "1"
+    end
+  end
 end
