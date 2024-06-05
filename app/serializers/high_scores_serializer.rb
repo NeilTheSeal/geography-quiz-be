@@ -1,4 +1,4 @@
 class HighScoresSerializer
   include JSONAPI::Serializer
-  attributes :username, :score
+  attributes :user_id, :number_correct
 end

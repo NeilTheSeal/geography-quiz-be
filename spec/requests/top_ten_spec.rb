@@ -2,11 +2,10 @@ require "rails_helper"
 
 RSpec.describe "TopTen" do
   before(:each) do
-    @user_list = create_list(:user, 20)
     @score_list = []
 
-    @user_list.each_with_index do |user, i|
-      @score_list << create(:quiz_result, user:, number_correct: 20 - i)
+    11.times do |i|
+      @score_list << create(:quiz_result, user_id: i, number_correct: 20 - i)
     end
   end
 
@@ -19,8 +18,8 @@ RSpec.describe "TopTen" do
       (0..9).map do |i|
         {
           attributes: {
-            score: top_ten[i].number_correct,
-            username: @user_list[i].name
+            number_correct: top_ten[i].number_correct,
+            user_id: i.to_s
           },
           id: top_ten[i].id.to_s,
           type: "high_scores"

@@ -1,9 +1,9 @@
 class HighScoreEntry
-  attr_reader :score, :username, :id
+  attr_reader :number_correct, :user_id, :id
 
   def initialize(id:, number_correct:, user_id:)
     @id = id
-    @score = number_correct
-    @username = User.find(user_id).name
+    @number_correct = number_correct
+    @user_id = user_id
   end
 end
