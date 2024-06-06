@@ -13,6 +13,6 @@ RSpec.describe 'previous score' do
     data = JSON.parse(response.body, symbolize_names: true)[:data]
 
     expect(data.length).to eq(5)
-    expect(data.first[:attributes]).to eq({user_id: "1", number_correct: @scores.first.number_correct})
+    expect(data.first[:attributes]).to eq({user_id: "1", number_correct: @scores.first.number_correct, created_at: "2024-01-01T00:00:00.000Z"})
   end
 end
