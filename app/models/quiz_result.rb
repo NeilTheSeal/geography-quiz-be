@@ -10,7 +10,8 @@ class QuizResult < ApplicationRecord
       HighScoreEntry.new(
         id: score.id,
         number_correct: score.number_correct,
-        user_id: score.user_id
+        user_id: score.user_id,
+        created_at: score.created_at
       )
     end
   end
@@ -21,7 +22,8 @@ class QuizResult < ApplicationRecord
       HighScoreEntry.new(
         id: score.id,
         number_correct: score.number_correct,
-        user_id: score.user_id
+        user_id: score.user_id,
+        created_at: score.created_at
       )
     end
   end
