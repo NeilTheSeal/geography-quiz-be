@@ -13,7 +13,7 @@ class Api::V0::HighScoresController < ApplicationController
           allow_other_host: true
         )
       else
-        redirect_to "http://localhost:3000/dashboard"
+        redirect_to "http://localhost:3000/dashboard", allow_other_host: true
       end
     else
       render json: { errors: quiz_result.errors.full_messages },
