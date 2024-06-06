@@ -8,7 +8,10 @@ class Api::V0::HighScoresController < ApplicationController
     quiz_result = QuizResult.new(quiz_result_params)
     if quiz_result.save
       if Rails.env.production?
-        redirect_to "https://secret-citadel-94988-86e2ffef1cda.herokuapp.com/dashboard"
+        redirect_to(
+          "https://secret-citadel-94988-86e2ffef1cda.herokuapp.com/dashboard",
+          allow_other_host: true
+        )
       else
         redirect_to "http://localhost:3000/dashboard"
       end
