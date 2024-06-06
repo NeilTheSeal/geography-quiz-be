@@ -7,17 +7,11 @@ class Api::V0::HighScoresController < ApplicationController
   def create
     quiz_result = QuizResult.new(quiz_result_params)
     if quiz_result.save
-      if Rails.env.production?
-        redirect_to(
-          "https://secret-citadel-94988-86e2ffef1cda.herokuapp.com/dashboard",
-          allow_other_host: true
-        )
-      else
-        redirect_to "http://localhost:3000/dashboard", allow_other_host: true
-      end
+      handle_redirects
     else
-      render json: { errors: quiz_result.errors.full_messages },
-             status: :unprocessable_entity
+      render json: {
+        errors: quiz_result.errors.full_messages
+      }, status: :unprocessable_entity
     end
   end
 
@@ -25,5 +19,16 @@ class Api::V0::HighScoresController < ApplicationController
 
   def quiz_result_params
     params.permit(:user_id, :number_correct)
+  end
+
+  def handle_redirects
+    if Rails.env.production?
+      redirect_to(
+        "https://secret-citadel-94988-86e2ffef1cda.herokuapp.com/dashboard",
+        allow_other_host: true
+      )
+    else
+      redirect_to "http://localhost:3000/dashboard", allow_other_host: true
+    end
   end
 end

@@ -20,17 +20,21 @@ class QuizQuestion
       drive_side
     ]
 
+    return_questions(question_types, geography_data)
+  end
+
+  def self.return_questions(question_types, geography_data)
     questions = []
 
     20.times do |id|
       question_type = question_types.sample
-      questions << return_question(question_type, geography_data, id)
+      questions << create_question(question_type, geography_data, id)
     end
 
     questions
   end
 
-  def self.return_question(question_type, geography_data, id)
+  def self.create_question(question_type, geography_data, id)
     case question_type
     when "capital"
       CapitalQuestion.new({
