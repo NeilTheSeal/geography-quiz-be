@@ -12,7 +12,6 @@ class FlagQuestion < QuizQuestion
 
     @question = "What is the flag of #{countries[0].name[:common]}?"
     @correct_answer = countries[0].flag_url
-    @options = countries.map { |country| country.flag_url }
-    @options.shuffle!
+    @options = countries.map(&:flag_url).shuffle
   end
 end
