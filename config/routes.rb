@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       get "/high-scores", to: "high_scores#index"
       get "/quiz-questions", to: "quiz_questions#index"
       get "/previous-scores", to: "previous_scores#index"
+      post "/high-scores", to: "high_scores#create"
     end
   end
 end
