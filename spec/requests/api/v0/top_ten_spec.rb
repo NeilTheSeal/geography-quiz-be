@@ -19,7 +19,8 @@ RSpec.describe "TopTen" do
         {
           attributes: {
             number_correct: top_ten[i].number_correct,
-            user_id: i.to_s
+            user_id: i.to_s,
+            created_at: "2024-01-01T00:00:00.000Z"
           },
           id: top_ten[i].id.to_s,
           type: "high_scores"
