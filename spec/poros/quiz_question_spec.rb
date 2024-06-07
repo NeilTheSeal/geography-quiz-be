@@ -40,7 +40,7 @@ RSpec.describe QuizQuestion do
     end
 
     it "can return a question" do
-      question = QuizQuestion.return_question("capital", country_data, 1)
+      question = QuizQuestion.create_question("capital", country_data, 1)
 
       expect(question).to be_a(CapitalQuestion)
     end
