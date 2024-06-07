@@ -30,12 +30,12 @@ class QuizQuestion
   def self.return_questions(question_types, geography_data)
     questions = []
 
-    20.times do |id|
-      question_type = question_types.sample
-      questions << create_question(question_type, geography_data, id)
+    question_types.each_with_index do |question_type, i|
+      questions << create_question(question_type, geography_data, 2 * i)
+      questions << create_question(question_type, geography_data, 2 * i + 1)
     end
 
-    questions
+    questions.shuffle
   end
 
   def self.create_question(question_type, geography_data, id)

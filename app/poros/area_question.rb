@@ -11,7 +11,7 @@ class AreaQuestion < QuizQuestion
 
     @question = "What is the area of #{country.name[:common]}?"
 
-    @correct_answer = "#{country.area.to_i} km\u00B2"
+    @correct_answer = "#{area_with_commas(country.area.to_i)} km\u00B2"
     @options = generate_options
   end
 
@@ -25,14 +25,16 @@ class AreaQuestion < QuizQuestion
       rand_exp = rand * (max_exp - min_exp) + min_exp
       area = (10.0**rand_exp).to_i
 
-      area_with_commas = area.to_s.reverse.gsub(
-        /(\d{3})(?=\d)/,
-        '\\1,'
-      ).reverse
-
-      options << "#{area_with_commas} km\u00B2"
+      options << "#{area_with_commas(area)} km\u00B2"
     end
 
     options.shuffle
+  end
+
+  def area_with_commas(area)
+    area.to_s.reverse.gsub(
+      /(\d{3})(?=\d)/,
+      '\\1,'
+    ).reverse
   end
 end
