@@ -18,6 +18,10 @@ class QuizQuestion
       landlocked
       population
       drive_side
+      un_member
+      area
+      sub_region
+      coat_of_arms
     ]
 
     return_questions(question_types, geography_data)
@@ -35,37 +39,28 @@ class QuizQuestion
   end
 
   def self.create_question(question_type, geography_data, id)
+    input_hash = { geography_data:, id: }
     case question_type
     when "capital"
-      CapitalQuestion.new({
-        geography_data:,
-        id:
-      })
+      CapitalQuestion.new(input_hash)
     when "flag"
-      FlagQuestion.new({
-        geography_data:,
-        id:
-      })
+      FlagQuestion.new(input_hash)
     when "borders"
-      BordersQuestion.new({
-        geography_data:,
-        id:
-      })
+      BordersQuestion.new(input_hash)
     when "landlocked"
-      LandlockedQuestion.new({
-        geography_data:,
-        id:
-      })
+      LandlockedQuestion.new(input_hash)
     when "population"
-      PopulationQuestion.new({
-        geography_data:,
-        id:
-      })
+      PopulationQuestion.new(input_hash)
     when "drive_side"
-      DriveSideQuestion.new({
-        geography_data:,
-        id:
-      })
+      DriveSideQuestion.new(input_hash)
+    when "un_member"
+      UnMemberQuestion.new(input_hash)
+    when "area"
+      AreaQuestion.new(input_hash)
+    when "sub_region"
+      SubRegionQuestion.new(input_hash)
+    when "coat_of_arms"
+      CoatOfArmsQuestion.new(input_hash)
     end
   end
 end
