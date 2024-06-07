@@ -20,6 +20,7 @@ class QuizQuestion
       drive_side
       un_member
       area
+      sub_region
     ]
 
     return_questions(question_types, geography_data)
@@ -55,6 +56,8 @@ class QuizQuestion
       UnMemberQuestion.new(input_hash)
     when "area"
       AreaQuestion.new(input_hash)
+    when "sub_region"
+      SubRegionQuestion.new(input_hash)
     end
   end
 end
