@@ -119,6 +119,7 @@ This is the back end to the **Geography Quiz** web application made by students 
 > | http code     | content-type                      | response                                                            |
 > |---------------|-----------------------------------|---------------------------------------------------------------------|
 > | `302`         | `none`        | `(redirect to user dashboard or home page)`                                |                              |
+> | `403`         | `json`        | `{"errors":["You are not authorized to submit a quiz result"]}             |                              |
 
 ##### Example cURL
 
