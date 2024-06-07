@@ -4,7 +4,7 @@
 ![Ruby][ruby-image]
 ![Rails][rails-image]
 
-This is the back end to the **Geography Quiz** web application made by students at [Turing School of Programming and Design](https://turing.edu) over the course of two weeks. The back end is an API [deployed on Heroku](https://ancient-plains-68209-663b50393b93.herokuapp.com) and uses PostgreSQL to store user scores and quiz data. The quiz questions are randomly generated using data from the [REST Countries API](https://restcountries.com). Each quiz is 20 questions and there is a high scores list displaying the most knowledgable folks. The front end of this project is open source and [available on GitHub.](https://github.com/NeilTheSeal/geography-quiz-fe)
+This is the back end to the **Geography Quiz** web application made by students at [Turing School of Programming and Design](https://turing.edu) over the course of two weeks. The back end is an API [deployed on Heroku](https://ancient-plains-68209-663b50393b93.herokuapp.com/api/v0) and uses PostgreSQL to store user scores and quiz data. The quiz questions are randomly generated using data from the [REST Countries API](https://restcountries.com). Each quiz is 20 questions and there is a high scores list displaying the most knowledgable folks. The front end of this project is open source and [available on GitHub](https://github.com/NeilTheSeal/geography-quiz-fe).
 
 ## Example API requests
 
@@ -28,23 +28,112 @@ This is the back end to the **Geography Quiz** web application made by students 
 
 > | http code     | content-type                      | response                                                            |
 > |---------------|-----------------------------------|---------------------------------------------------------------------|
-> | `201`         | `application/json`        | `[{question: "example question", answer: "example answer"}, ...]`                                |
-> | `400`         | `application/json`                | `{"code":"400", "message":"Bad Request"}`                            |                                                  |
+> | `200`         | `application/json`        | `{"data": [{"id":"0","type":"questions","attributes":{"question":"...","correct_answer":"...","options":["..."],"image": false}}, ...]}`                                |
 
 ##### Example cURL
 
 > ```javascript
->  curl -X GET -H "accept: application/json" https://ancient-plains-68209-663b50393b93.herokuapp.com/quiz-questions
+>  curl -X GET -H "accept: application/json" "https://ancient-plains-68209-663b50393b93.herokuapp.com/api/v0/quiz-questions"
+> ```
+</details>
+
+<details>
+ <summary><code>GET</code> <code>/high-scores</code></summary>
+
+
+##### Parameters
+
+> | name      |  type     | data type               | description                                                           |
+> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
+> | None      |  N/A | N/A   | N/A  |
+
+##### Headers
+
+> | name      |  type     | data type               | description                                                           |
+> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
+> | accept      |  optional | string   | application/json  |
+
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`        | `{"data":[{"id":"1","type":"high_scores","attributes":{"user_id":"...","number_correct":15,"created_at":"2024-06-06T00:00:00Z"}}, ...]}`                                |
+> | `304`         | `application/json`        | `(same as above)`                                |
+
+##### Example cURL
+
+> ```javascript
+>  curl -X GET -H "accept: application/json" "https://ancient-plains-68209-663b50393b93.herokuapp.com/api/v0/high-scores"
+> ```
+</details>
+
+<details>
+ <summary><code>GET</code> <code>/previous-scores</code></summary>
+
+
+##### Parameters
+
+> | name      |  type     | data type               | description                                                           |
+> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
+> | user_id      |  required | string   | the user id as recorded in the front-end database  |
+
+##### Headers
+
+> | name      |  type     | data type               | description                                                           |
+> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
+> | accept      |  optional | string   | application/json  |
+
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`        | `{"data":[{"id":"1","type":"high_scores","attributes":{"user_id":"...","number_correct":15,"created_at":"2024-06-06T00:00:00Z"}}, ...]}`                                |
+> | `304`         | `application/json`        | `(same as above)`                                |                            |
+
+##### Example cURL
+
+> ```javascript
+>  curl -X GET -H "accept: application/json" "https://ancient-plains-68209-663b50393b93.herokuapp.com/api/v0/previous-scores?user_id=0123456789"
+> ```
+</details>
+
+<details>
+ <summary><code>POST</code> <code>/high-scores</code></summary>
+
+
+##### Parameters
+
+> | name      |  type     | data type               | description                                                           |
+> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
+> | user_id      |  required | string   | the user id as recorded in the front-end database  |
+> | number_correct     |  required | integer   | the number of questions that were correct on the quiz  |
+
+##### Headers
+
+> | name      |  type     | data type               | description                                                           |
+> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
+> | accept      |  optional | string   | application/json  |
+
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `302`         | `none`        | `(redirect to user dashboard or home page)`                                |                              |
+
+##### Example cURL
+
+> ```javascript
+>  curl -X GET -H "accept: application/json" "https://ancient-plains-68209-663b50393b93.herokuapp.com/api/v0/high-scores?user_id=0123456789&number_correct=5"
 > ```
 </details>
 
 ## Q&A
 
-- Example question 1
-  - Example answer 1
+- What is the purpose of this application?
+  - This application generates random questions for [the front end](https://github.com/NeilTheSeal/geography-quiz-fe) of this application. It also stores user scores and returns the high scores list.
 
-- Example question 2
-  - Example answer 2
+- Do I need an API key to use this?
+  - No, but there is no practical use for this API aside from communicating with the front-end application.
 
 ## Development setup
 
@@ -73,7 +162,7 @@ The API will be served on `localhost:5000`.
 ## Release History
 
 * 0.0.1
-    * Work in progress
+    * Initial deployment 06/07/2024
 
 ## Meta
 
