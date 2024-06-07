@@ -127,6 +127,19 @@ This is the back end to the **Geography Quiz** web application made by students 
 > ```
 </details>
 
+## Database Schema
+
+There is one table in the back-end database - the quiz results table.
+
+### Quiz Results
+
+| Column         | Data Type |  Required  |
+|----------------|-----------|------------|
+| user_id        | string    |     true   |
+| number_correct | integer   |     true   |
+| created_at     | datetime  |     true   |
+| updated_at     | datetime  |     true   |
+
 ## Q&A
 
 - What is the purpose of this application?
