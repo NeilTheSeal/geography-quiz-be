@@ -21,6 +21,7 @@ class QuizQuestion
       un_member
       area
       sub_region
+      coat_of_arms
     ]
 
     return_questions(question_types, geography_data)
@@ -58,6 +59,8 @@ class QuizQuestion
       AreaQuestion.new(input_hash)
     when "sub_region"
       SubRegionQuestion.new(input_hash)
+    when "coat_of_arms"
+      CoatOfArmsQuestion.new(input_hash)
     end
   end
 end
