@@ -19,6 +19,7 @@ class QuizQuestion
       population
       drive_side
       un_member
+      area
     ]
 
     return_questions(question_types, geography_data)
@@ -52,6 +53,8 @@ class QuizQuestion
       DriveSideQuestion.new(input_hash)
     when "un_member"
       UnMemberQuestion.new(input_hash)
+    when "area"
+      AreaQuestion.new(input_hash)
     end
   end
 end
