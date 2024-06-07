@@ -137,7 +137,7 @@ This is the back end to the **Geography Quiz** web application made by students 
 
 ## Development setup
 
-The back-end of this project uses Ruby on Rails 7.1.3 and was built using macOS Sonoma 14.4.1.
+This guide assumes you have installed [Rails 7.1.3](https://guides.rubyonrails.org/v7.1/getting_started.html) and [PostgreSQL >= 14](https://www.postgresql.org/download/)
 
 First, clone the repository to your computer
 
@@ -151,6 +151,12 @@ Next, install all of the Gems
 bundle install
 ```
 
+Create, migrate, and seed the databases
+
+```sh
+rails db:{create,migrate,seed}
+```
+
 Finally, start the development server
 
 ```sh
@@ -158,6 +164,12 @@ rails s
 ```
 
 The API will be served on `localhost:5000`.
+
+Run the test suite to diagnose issues -
+
+```sh
+bundle exec rspec
+```
 
 ## Release History
 
