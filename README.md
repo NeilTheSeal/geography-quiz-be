@@ -123,7 +123,7 @@ This is the back end to the **Geography Quiz** web application made by students 
 ##### Example cURL
 
 > ```javascript
->  curl -X GET -H "accept: application/json" "https://ancient-plains-68209-663b50393b93.herokuapp.com/api/v0/high-scores?user_id=0123456789&number_correct=5"
+>  curl -X POST -H "accept: application/json" "https://ancient-plains-68209-663b50393b93.herokuapp.com/api/v0/high-scores?user_id=0123456789&number_correct=5"
 > ```
 </details>
 
